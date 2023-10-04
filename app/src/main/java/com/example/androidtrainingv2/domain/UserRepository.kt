@@ -4,6 +4,6 @@ import com.example.androidtrainingv2.app.ErrorApp
 import com.iesam.kotlintrainning.Either
 
 interface UserRepository {
-    fun save(name: String, surname: String): Either<ErrorApp, Boolean>;
+    fun save(user: Input): Either<ErrorApp, Boolean>;
 
 }

@@ -8,6 +8,7 @@ import androidx.activity.viewModels
 import com.example.androidtrainingv2.R
 import com.example.androidtrainingv2.data.UserDataRepository
 import com.example.androidtrainingv2.data.XmlLocalDataSource
+import com.example.androidtrainingv2.domain.Input
 import com.example.androidtrainingv2.domain.SaveUserUseCase
 import com.example.androidtrainingv2.domain.UserRepository
 
@@ -24,8 +25,9 @@ class MainActivity : AppCompatActivity() {
     }
     private fun setupView(){
         val actionButton = findViewById<Button>(R.id.action_save)
+        val user = Input(getNameInput(),getSurnameInput(),getAgeInput())
         actionButton.setOnClickListener {
-            viewModels.saveUser(getNameInput(),getSurnameInput())
+            viewModels.saveUser(user)
         }
     }
 
