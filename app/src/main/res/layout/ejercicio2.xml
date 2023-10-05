@@ -48,6 +48,18 @@
         android:layout_height="wrap_content"
         android:text="@string/action_save"
         />
+    <Button
+        android:text="@string/action_get"
+        android:id="@+id/action_get"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/action_clean"
+        android:text="@string/action_clean"
+        />
+
 
 
 </LinearLayout>
