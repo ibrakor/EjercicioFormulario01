@@ -8,9 +8,7 @@ import android.widget.EditText
 import com.example.androidtrainingv2.R
 import com.example.androidtrainingv2.data.UserDataRepository
 import com.example.androidtrainingv2.data.XmlLocalDataSource
-import com.example.androidtrainingv2.domain.Input
 import com.example.androidtrainingv2.domain.SaveUserUseCase
-import com.example.androidtrainingv2.domain.UserRepository
 
 class MainActivity : AppCompatActivity() {
     val viewModels: MainViewModel by lazy {
