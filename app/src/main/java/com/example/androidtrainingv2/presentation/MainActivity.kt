@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import androidx.activity.viewModels
+
 import com.example.androidtrainingv2.R
 import com.example.androidtrainingv2.data.UserDataRepository
 import com.example.androidtrainingv2.data.XmlLocalDataSource
@@ -25,9 +25,8 @@ class MainActivity : AppCompatActivity() {
     }
     private fun setupView(){
         val actionButton = findViewById<Button>(R.id.action_save)
-        val user = Input(getNameInput(),getSurnameInput(),getAgeInput())
         actionButton.setOnClickListener {
-            viewModels.saveUser(user)
+            viewModels.saveUser(getNameInput(),getSurnameInput(),getAgeInput())
         }
     }
 
