@@ -1,21 +1,19 @@
 package com.example.androidtrainingv2.data
 
 import android.content.Context
-import android.provider.Settings.Global.getString
-import com.example.androidtrainingv2.R
 import com.example.androidtrainingv2.app.ErrorApp
-import com.example.androidtrainingv2.domain.Input
+import com.example.androidtrainingv2.domain.SaveUserUseCase
 import com.iesam.kotlintrainning.Either
 import com.iesam.kotlintrainning.left
 import com.iesam.kotlintrainning.right
-import java.lang.Exception
 
 class XmlLocalDataSource(private val context: Context) {
     val sharedPref = context.getSharedPreferences("users", Context.MODE_PRIVATE)
-    fun saveUser(user: Input): Either<ErrorApp, Boolean>{
+    fun saveUser(user: SaveUserUseCase.Input): Either<ErrorApp, Boolean>{
 
          try {
              with (sharedPref.edit()) {
+                // putInt("id", )
                  putString("username", user.userName)
                  putString("surname", user.surname)
                  putInt("age", user.age)

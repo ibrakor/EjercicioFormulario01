@@ -11,7 +11,7 @@ import com.example.androidtrainingv2.data.XmlLocalDataSource
 import com.example.androidtrainingv2.domain.SaveUserUseCase
 
 class MainActivity : AppCompatActivity() {
-    val viewModels: MainViewModel by lazy {
+    private val viewModels: MainViewModel by lazy {
         MainViewModel(SaveUserUseCase(UserDataRepository(
         XmlLocalDataSource(this))))
     }
