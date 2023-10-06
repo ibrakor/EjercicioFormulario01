@@ -6,11 +6,15 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.androidtrainingv2.app.ErrorApp
+import com.example.androidtrainingv2.domain.GetUserUseCase
 import com.example.androidtrainingv2.domain.SaveUserUseCase
+import com.example.androidtrainingv2.domain.User
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class MainViewModel(private val saveUserUseCase: SaveUserUseCase) : ViewModel() {
+
+class MainViewModel(private val saveUserUseCase: SaveUserUseCase,
+                    private val getUserUseCase: GetUserUseCase) : ViewModel() {
     
     private val _uiState = MutableLiveData<UiState>()
     val uiState: LiveData<UiState> = _uiState
@@ -21,12 +25,12 @@ class MainViewModel(private val saveUserUseCase: SaveUserUseCase) : ViewModel() 
             {responseSucces(it)}
         )
     }
-    fun loadUser(){
-        viewModelScope.launch(Dispatchers.IO){
-            Log.d("@dev","Hilo")
-        }
-        Log.d("@dev","Main")
-
+    fun getUser(){
+        viewModelScope.launch(Dispatchers.IO){  }
+            getUserUseCase.invoke().fold(
+                {responseError(it)},
+                {responseGetUserSuccess(it)}
+            )
     }
 
 
@@ -36,10 +40,13 @@ class MainViewModel(private val saveUserUseCase: SaveUserUseCase) : ViewModel() 
     private fun responseSucces(itsOk: Boolean){
 
     }
+    private fun responseGetUserSuccess(user: User){
+        _uiState.postValue(UiState(user = user))
+    }
     data class UiState(
         val errorApp: ErrorApp?=null,
         val isLoading: Boolean = false,
-        val user: SaveUserUseCase.Input? = null
+        val user: User? = null
     )
 
 }
